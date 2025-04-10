@@ -2,13 +2,22 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Settings } from "lucide-react";
+import { getAppMode } from "@/utils/localStorage";
 
 const Index = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Redirection vers la page d'accueil réelle
-    navigate("/");
+    // Vérifier si un mode a déjà été sélectionné
+    const appMode = getAppMode();
+    
+    if (appMode) {
+      // Si un mode est déjà sélectionné, redirection vers la page d'accueil réelle
+      navigate("/");
+    } else {
+      // Sinon, redirection vers la page de sélection de mode
+      navigate("/mode-selection");
+    }
   }, [navigate]);
 
   // Ce code ne sera jamais exécuté en raison de la redirection dans useEffect,

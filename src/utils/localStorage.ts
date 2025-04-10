@@ -1,4 +1,3 @@
-
 // Utilitaires pour gérer les données dans le localStorage
 
 // Sauvegarder un utilisateur
@@ -48,4 +47,16 @@ export const generateUserId = (firstName: string, lastName: string) => {
 export const resetQuestData = () => {
   localStorage.removeItem('quest_user');
   localStorage.removeItem('quest_progress');
+};
+
+// App Mode Storage
+export type AppMode = 'dev' | 'run';
+
+export const getAppMode = (): AppMode => {
+  const mode = localStorage.getItem('app_mode');
+  return (mode as AppMode) || 'dev'; // Default to dev mode
+};
+
+export const setAppMode = (mode: AppMode): void => {
+  localStorage.setItem('app_mode', mode);
 };
