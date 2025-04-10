@@ -12,6 +12,7 @@ import ScanPage from "./pages/ScanPage";
 import QuestionPage from "./pages/QuestionPage";
 import FinishPage from "./pages/FinishPage";
 import NotFound from "./pages/NotFound";
+import SetupPage from "./pages/SetupPage";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/scan" element={<ScanPage />} />
           <Route path="/question/:id" element={<QuestionPage />} />
           <Route path="/finish" element={<FinishPage />} />
+          <Route path="/setup" element={<SetupPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
