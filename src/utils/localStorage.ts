@@ -1,4 +1,7 @@
+
 // Utilitaires pour gérer les données dans le localStorage
+import { saveUserToDb, getUserById } from '@/services/databaseService';
+import { User } from '@/types/database';
 
 // Sauvegarder un utilisateur
 export const saveUser = (userData: {
@@ -7,11 +10,15 @@ export const saveUser = (userData: {
   lastName: string;
   email: string;
   phone: string;
-}) => {
+}): void => {
+  // Sauvegarder dans la base de données locale
+  saveUserToDb(userData);
+  
+  // Garder l'utilisateur actif dans le localStorage pour la session
   localStorage.setItem('quest_user', JSON.stringify(userData));
 };
 
-// Récupérer les informations utilisateur
+// Récupérer les informations utilisateur de la session active
 export const getUser = () => {
   const userData = localStorage.getItem('quest_user');
   if (!userData) return null;

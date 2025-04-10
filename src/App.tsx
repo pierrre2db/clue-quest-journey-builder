@@ -15,6 +15,7 @@ import NotFound from "./pages/NotFound";
 import SetupPage from "./pages/SetupPage";
 import ModeSelectionPage from "./pages/ModeSelectionPage";
 import Index from "./pages/Index";
+import ResultsPage from "./pages/ResultsPage";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/finish" element={<FinishPage />} />
           <Route path="/setup" element={<SetupPage />} />
           <Route path="/mode-selection" element={<ModeSelectionPage />} />
+          <Route path="/results" element={<ResultsPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

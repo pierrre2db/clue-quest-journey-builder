@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
 import ProgressIndicator from './ProgressIndicator';
 import { useNavigate } from 'react-router-dom';
+import { saveAnswer } from '@/services/databaseService';
 
 type QuestionOption = {
   id: string;
@@ -48,26 +49,34 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
     
     setIsSubmitting(true);
     
-    // Simuler l'envoi de la réponse à un backend
-    console.log({
-      questionId,
-      userId,
-      answer: selectedOption,
-      timestamp: new Date().toISOString()
-    });
-    
-    // Simulation d'un délai d'envoi
-    setTimeout(() => {
+    try {
+      // Sauvegarder la réponse dans la base de données
+      saveAnswer({
+        userId,
+        questionId,
+        selectedOption
+      });
+      
+      // Afficher un message de confirmation
       toast({
         title: "Réponse enregistrée !",
         description: "Passez à l'étape suivante du parcours",
       });
       
-      setIsSubmitting(false);
-      
       // Pour le MVP, on revient à la page de scan
-      navigate('/scan');
-    }, 1500);
+      setTimeout(() => {
+        setIsSubmitting(false);
+        navigate('/scan');
+      }, 1000);
+    } catch (error) {
+      console.error("Erreur lors de l'enregistrement de la réponse:", error);
+      toast({
+        title: "Erreur",
+        description: "Une erreur est survenue lors de l'enregistrement de votre réponse",
+        variant: "destructive"
+      });
+      setIsSubmitting(false);
+    }
   };
 
   return (
