@@ -20,17 +20,11 @@ const Index = () => {
     }
   }, [navigate]);
 
-  // Ce code ne sera jamais exécuté en raison de la redirection dans useEffect,
-  // mais nous l'ajoutons pour permettre d'accéder au menu d'administration
-  // en accédant directement à /index
-  const handleSetupClick = () => {
-    navigate("/setup");
-  };
-
   return (
     <div className="h-screen flex items-center justify-center">
+      <p className="text-center text-lg">Chargement...</p>
       <button
-        onClick={handleSetupClick}
+        onClick={() => navigate("/setup")}
         className="absolute bottom-4 right-4 p-2 rounded-full bg-muted/50 hover:bg-muted/80 transition-colors"
         aria-label="Paramètres"
       >

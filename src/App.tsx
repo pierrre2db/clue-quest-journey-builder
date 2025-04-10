@@ -14,6 +14,7 @@ import FinishPage from "./pages/FinishPage";
 import NotFound from "./pages/NotFound";
 import SetupPage from "./pages/SetupPage";
 import ModeSelectionPage from "./pages/ModeSelectionPage";
+import Index from "./pages/Index";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/index" element={<Index />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/scan" element={<ScanPage />} />
           <Route path="/question/:id" element={<QuestionPage />} />
