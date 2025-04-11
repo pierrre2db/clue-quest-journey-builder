@@ -13,10 +13,10 @@ const Index = () => {
     
     if (appMode) {
       // Si un mode est déjà sélectionné, redirection vers la page d'accueil réelle
-      navigate("/");
+      navigate("/home", { replace: true });
     } else {
       // Sinon, redirection vers la page de sélection de mode
-      navigate("/mode-selection");
+      navigate("/mode-selection", { replace: true });
     }
   }, [navigate]);
 
