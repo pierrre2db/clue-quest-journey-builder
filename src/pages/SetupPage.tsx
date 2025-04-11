@@ -55,6 +55,14 @@ const SetupPage = () => {
             <Button 
               variant="secondary" 
               className="w-full"
+              onClick={() => navigate('/admin/questions')}
+            >
+              Gérer les questions
+            </Button>
+            
+            <Button 
+              variant="secondary" 
+              className="w-full"
               onClick={handleExportQuestions}
             >
               Exporter les questions (CSV)
