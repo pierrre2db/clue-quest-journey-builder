@@ -43,6 +43,8 @@ const QuestionPage = () => {
         currentStep={questionData.step}
         totalSteps={TOTAL_STEPS}
         userId={user?.id}
+        imageUrl={questionData.imageUrl}
+        qrCodeUrl={questionData.qrCodeUrl}
       />
       
       <div className="mt-auto pt-6 text-center">

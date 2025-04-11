@@ -7,6 +7,7 @@ import { useToast } from "@/components/ui/use-toast";
 import ProgressIndicator from './ProgressIndicator';
 import { useNavigate } from 'react-router-dom';
 import { saveAnswer } from '@/services/databaseService';
+import { Image, QrCode } from 'lucide-react';
 
 type QuestionOption = {
   id: string;
@@ -20,6 +21,8 @@ type QuestionCardProps = {
   currentStep: number;
   totalSteps: number;
   userId?: string;
+  imageUrl?: string;
+  qrCodeUrl?: string;
 };
 
 const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -28,7 +31,9 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   options,
   currentStep,
   totalSteps,
-  userId = 'anonymous' // Valeur par défaut pour le MVP
+  userId = 'anonymous', // Valeur par défaut pour le MVP
+  imageUrl,
+  qrCodeUrl
 }) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -83,6 +88,16 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
     <div className="quest-card">
       <ProgressIndicator currentStep={currentStep} totalSteps={totalSteps} />
       
+      {imageUrl && (
+        <div className="mb-6 rounded-lg overflow-hidden">
+          <img 
+            src={imageUrl} 
+            alt="Illustration" 
+            className="w-full h-auto object-cover"
+          />
+        </div>
+      )}
+      
       <h2 className="quest-title">{questionText}</h2>
       
       <form onSubmit={handleSubmit}>
@@ -107,6 +122,19 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
           {isSubmitting ? 'Envoi en cours...' : 'Valider ma réponse'}
         </Button>
       </form>
+      
+      {qrCodeUrl && (
+        <div className="mt-6 flex justify-center">
+          <div className="p-4 border border-border rounded-lg">
+            <img 
+              src={qrCodeUrl} 
+              alt="QR Code" 
+              className="w-32 h-32"
+            />
+            <p className="text-xs text-center mt-2 text-muted-foreground">Scannez ce QR code</p>
+          </div>
+        </div>
+      )}
       
       <div className="mt-4 text-center text-xs text-muted-foreground">
         ID Participant: {userId}

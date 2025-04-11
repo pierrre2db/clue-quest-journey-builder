@@ -9,6 +9,8 @@ export interface Question {
   questionText: string;
   options: QuestionOption[];
   step: number;
+  imageUrl?: string;
+  qrCodeUrl?: string;
 }
 
 export type QuestionsData = Record<string, Question>;

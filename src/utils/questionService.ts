@@ -13,6 +13,8 @@ const defaultQuestionsData: QuestionsData = {
       { id: 'd', text: 'Formation 100% à distance sans accompagnement' },
     ],
     step: 1,
+    imageUrl: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400',
+    qrCodeUrl: 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://example.com/question/2',
   },
   '2': {
     questionId: '2',
@@ -24,6 +26,8 @@ const defaultQuestionsData: QuestionsData = {
       { id: 'd', text: 'Un an en alternance entreprise/école' },
     ],
     step: 2,
+    imageUrl: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=400',
+    qrCodeUrl: 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://example.com/question/3',
   },
   '3': {
     questionId: '3',
@@ -35,6 +39,8 @@ const defaultQuestionsData: QuestionsData = {
       { id: 'd', text: 'Plus de 85% dans les 6 mois' },
     ],
     step: 3,
+    imageUrl: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&h=400',
+    qrCodeUrl: 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://example.com/question/4',
   },
   '4': {
     questionId: '4',
@@ -46,6 +52,8 @@ const defaultQuestionsData: QuestionsData = {
       { id: 'd', text: 'Studio photo et vidéo professionnel' },
     ],
     step: 4,
+    imageUrl: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=400',
+    qrCodeUrl: 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://example.com/finish',
   },
 };
 

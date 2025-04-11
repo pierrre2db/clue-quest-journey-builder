@@ -8,6 +8,8 @@ import { useToast } from "@/components/ui/use-toast";
 import { getQuestions, saveQuestions } from '@/utils/questionService';
 import { QuestionsData, Question, QuestionOption } from '@/types/questions';
 import QuestLogo from '@/components/QuestLogo';
+import { Image, QrCode } from 'lucide-react';
+import { Checkbox } from "@/components/ui/checkbox";
 
 const QuestionsAdminPage = () => {
   const [questions, setQuestions] = useState<QuestionsData>({});
@@ -35,6 +37,8 @@ const QuestionsAdminPage = () => {
         { id: 'd', text: 'Option D' },
       ],
       step: newId,
+      imageUrl: '',
+      qrCodeUrl: '',
     };
 
     setQuestions(prev => ({
@@ -70,6 +74,28 @@ const QuestionsAdminPage = () => {
         options: prev[questionId].options.map(opt => 
           opt.id === optionId ? { ...opt, text } : opt
         )
+      }
+    }));
+  };
+
+  // Mettre à jour l'URL de l'image
+  const updateImageUrl = (questionId: string, imageUrl: string) => {
+    setQuestions(prev => ({
+      ...prev,
+      [questionId]: {
+        ...prev[questionId],
+        imageUrl
+      }
+    }));
+  };
+
+  // Mettre à jour l'URL du QR code
+  const updateQrCodeUrl = (questionId: string, qrCodeUrl: string) => {
+    setQuestions(prev => ({
+      ...prev,
+      [questionId]: {
+        ...prev[questionId],
+        qrCodeUrl
       }
     }));
   };
@@ -134,6 +160,54 @@ const QuestionsAdminPage = () => {
                 onChange={(e) => updateQuestionText(question.questionId, e.target.value)}
                 className="mt-1"
               />
+            </div>
+            
+            {/* Image URL section */}
+            <div className="mb-4">
+              <div className="flex items-center mb-2">
+                <Image size={16} className="mr-2" />
+                <Label htmlFor={`img-${question.questionId}`}>URL de l'image d'illustration</Label>
+              </div>
+              <Input 
+                id={`img-${question.questionId}`}
+                value={question.imageUrl || ''}
+                onChange={(e) => updateImageUrl(question.questionId, e.target.value)}
+                placeholder="https://example.com/image.jpg"
+                className="mt-1"
+              />
+              {question.imageUrl && (
+                <div className="mt-2 p-2 border rounded-md">
+                  <img 
+                    src={question.imageUrl} 
+                    alt="Aperçu" 
+                    className="h-24 object-cover rounded" 
+                  />
+                </div>
+              )}
+            </div>
+            
+            {/* QR Code URL section */}
+            <div className="mb-4">
+              <div className="flex items-center mb-2">
+                <QrCode size={16} className="mr-2" />
+                <Label htmlFor={`qr-${question.questionId}`}>URL du QR code</Label>
+              </div>
+              <Input 
+                id={`qr-${question.questionId}`}
+                value={question.qrCodeUrl || ''}
+                onChange={(e) => updateQrCodeUrl(question.questionId, e.target.value)}
+                placeholder="https://example.com/qrcode.png"
+                className="mt-1"
+              />
+              {question.qrCodeUrl && (
+                <div className="mt-2 p-2 border rounded-md">
+                  <img 
+                    src={question.qrCodeUrl} 
+                    alt="QR Code" 
+                    className="h-24 object-cover rounded" 
+                  />
+                </div>
+              )}
             </div>
             
             <h3 className="font-medium mb-2">Options de réponse</h3>
