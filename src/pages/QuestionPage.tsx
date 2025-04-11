@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import QuestionCard from '@/components/QuestionCard';
 import QuestLogo from '@/components/QuestLogo';
+import NavBar from '@/components/NavBar';
 import { getUser } from '@/utils/localStorage';
 import { getQuestions, getTotalSteps } from '@/utils/questionService';
 
@@ -55,6 +56,8 @@ const QuestionPage = () => {
           Revenir au scan
         </button>
       </div>
+
+      <NavBar />
     </div>
   );
 };

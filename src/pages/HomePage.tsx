@@ -3,6 +3,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import QuestLogo from '@/components/QuestLogo';
+import NavBar from '@/components/NavBar';
 import { isUserRegistered } from '@/utils/localStorage';
 
 const HomePage = () => {
@@ -75,6 +76,8 @@ const HomePage = () => {
       <footer className="mt-auto pt-8 text-center text-sm text-muted-foreground">
         <p>© {new Date().getFullYear()} - Journées Portes Ouvertes</p>
       </footer>
+
+      <NavBar />
     </div>
   );
 };
