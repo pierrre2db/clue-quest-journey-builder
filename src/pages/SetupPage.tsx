@@ -63,6 +63,14 @@ const SetupPage = () => {
             <Button 
               variant="secondary" 
               className="w-full"
+              onClick={() => navigate('/navigation')}
+            >
+              Voir toutes les pages
+            </Button>
+            
+            <Button 
+              variant="secondary" 
+              className="w-full"
               onClick={handleExportQuestions}
             >
               Exporter les questions (CSV)

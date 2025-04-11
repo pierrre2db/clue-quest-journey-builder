@@ -17,6 +17,7 @@ import ModeSelectionPage from "./pages/ModeSelectionPage";
 import Index from "./pages/Index";
 import ResultsPage from "./pages/ResultsPage";
 import QuestionsAdminPage from "./pages/QuestionsAdminPage";
+import NavigationPage from "./pages/NavigationPage";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +38,7 @@ const App = () => (
           <Route path="/mode-selection" element={<ModeSelectionPage />} />
           <Route path="/results" element={<ResultsPage />} />
           <Route path="/admin/questions" element={<QuestionsAdminPage />} />
+          <Route path="/navigation" element={<NavigationPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
